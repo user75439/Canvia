@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.env.local
+.env.*.local
+*.log
+logs/
+data/profi-planner.db
+backups/
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/settings.json
+.idea/

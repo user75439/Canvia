@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 14% 10%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 13% 14%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 13% 16%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 220 14% 10%;
+
+    --secondary: 220 13% 20%;
+    --secondary-foreground: 210 20% 85%;
+
+    --muted: 220 13% 18%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 220 14% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 20% 95%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 210 20% 95%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 14% 10%;
+
+    --border: 220 13% 22%;
+    --input: 220 13% 18%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.5rem;
+
+    --canvas-grid: 220 13% 16%;
+    --canvas-dot: 220 13% 25%;
+
+    --tile-installer: 199 89% 48%;
+    --tile-order: 262 83% 58%;
+
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  .canvas-grid {
+    background-image: 
+      radial-gradient(circle, hsl(var(--canvas-dot)) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .tile-glow-installer {
+    box-shadow: 0 0 20px -5px hsl(var(--tile-installer) / 0.4);
+  }
+
+  .tile-glow-order {
+    box-shadow: 0 0 20px -5px hsl(var(--tile-order) / 0.4);
+  }
+
+  .tile-glow-brigade {
+    box-shadow: 0 0 20px -5px rgb(22 163 74 / 0.4);
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(12px);
+    background: hsl(var(--card) / 0.85);
+  }
+
+  .status-free {
+    @apply bg-success/20 text-success border-success/30;
+  }
+
+  .status-busy {
+    @apply bg-warning/20 text-warning border-warning/30;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

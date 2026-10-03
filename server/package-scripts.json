@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "scripts": {
+    "reset-admin": "tsx src/reset-admin-password.ts"
+  }
+}
