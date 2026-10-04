@@ -1553,8 +1553,8 @@ const LoginPage: React.FC = () => {
               <WrenchScrewdriverIcon className="w-8 h-8 text-primary" />
             </div>
           </div>
-          <h1 className="text-2xl font-bold text-center mb-2">Canvia</h1>
-          <p className="text-muted-foreground text-center mb-8">Система планирования логистики</p>
+          <h1 className="text-2xl font-bold text-center mb-2">Электронный Город</h1>
+          <p className="text-muted-foreground text-center mb-8">Планирование монтажей</p>
           
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -1590,7 +1590,7 @@ const LoginPage: React.FC = () => {
           </form>
           
           <p className="text-xs text-muted-foreground text-center mt-6">
-            © 2024 Canvia. Все права защищены.
+            © 2026 Электронный Город. Все права защищены.
           </p>
         </div>
       </div>
@@ -3813,7 +3813,7 @@ const Canvas: React.FC = () => {
             <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
               <WrenchScrewdriverIcon className="w-4 h-4 text-primary" />
             </div>
-            <span className="font-bold">Canvia</span>
+            <span className="font-bold whitespace-nowrap">ЭГ <span className="hidden sm:inline font-normal text-muted-foreground">· Наряды</span></span>
           </div>
         </div>
         
