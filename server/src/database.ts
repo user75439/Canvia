@@ -37,10 +37,15 @@ async function initializeDatabase() {
     `);
     console.log('✅ Users table ready');
 
-    // Добавляем админа по умолчанию если его нет
-    const admin = await getAsync('SELECT id FROM users WHERE login = ?', ['admin']);
-    if (!admin) {
-      const adminId = 'admin-1';
+    // Дефолтного админа создаём только если в системе ВООБЩЕ нет администратора.
+    // Проверка по роли, а не по логину: если 'admin' удалён/переименован, а другой
+    // пользователь с ролью admin есть — ничего не создаём (иначе admin/admin воскреснет).
+    const anyAdmin = await getAsync('SELECT id FROM users WHERE role = ? LIMIT 1', ['admin']);
+    if (!anyAdmin) {
+      // id 'admin-1' мог остаться занятым (например, от удалённого пользователя) — подбираем свободный
+      let adminId = 'admin-1';
+      const idTaken = await getAsync('SELECT id FROM users WHERE id = ?', [adminId]);
+      if (idTaken) adminId = `admin-${Date.now().toString(36)}`;
       // Используем пароль из переменной окружения или дефолтный
       const defaultPassword = process.env.DEFAULT_ADMIN_PASSWORD || 'admin';
       const hashedPassword = await bcrypt.hash(defaultPassword, 10);
